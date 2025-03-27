@@ -10,6 +10,25 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
     properties:
-      spring.json.trusted.packages: "com.jpmc.midascore.foundation"
+      request.timeout.ms: 30000
+      spring.json.trusted.packages: "com.jpmc.midascore.*"
+
+  datasource:
+    url: jdbc:h2:mem:midas
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: dinesh
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+      show_sql: true
+  h2:
+    console:
+      enabled: true
+
 general:
   kafka-topic: transaction-topic
+
+
